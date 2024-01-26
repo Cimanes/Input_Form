@@ -1,0 +1,142 @@
+body {
+  background-color: #444;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+hgroup {
+	background-color: #aaa;
+}
+header {
+  background-color: #888;
+  padding: 1em;
+  text-align: center;
+}
+
+.menu {
+  width: auto;
+  text-align: left;
+}
+#menuButton { margin: 20px 0 0 20px; }
+ul { display: none; }
+ul.shown {display: inline-grid; }
+
+h4 {
+  margin-top: 0.8em;
+  margin-bottom: 0.3em;
+  font-family: Calibri;
+}
+
+main {
+  background-color: #aaa;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+section {
+  margin: 10px;
+  padding: 1em;
+  background-color: #ccc;
+}
+section, fieldset, hgroup, header, main, footer {
+    border-radius: 20px;
+}
+fieldset {
+	border-color: #345;
+	border-style: dashed;
+}
+
+footer {
+	margin-top: 5px;
+  background-color: #987;
+  padding: 3px;
+}
+
+#footColor, #footText {
+  display: inline-block;
+  margin-right: 100px;
+}
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+	border: solid 2px;
+}
+
+input[type='color']  {
+  border-radius: 5px;
+  width: 30px;
+}
+
+input[type=submit] {
+  background-color: #69b;
+  color: white;
+	border-radius: 5px;
+}
+
+input[type=reset] {
+  background-color: #d66;
+  color: white;
+	border-radius: 5px;
+}
+
+/* Style the sections */
+form {
+  background-color: #757575;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#pwdMessage, #idMessage{
+  align-items: center;
+  width: 280px;
+  display:none;
+  background: #aaa;
+  color: #000;
+  position: relative;
+  margin: -20px auto;
+  padding: 5px 35px;
+	border-radius: 5px;
+}
+
+/* reduce the size of text and header in the password tip message */
+#pwdMessage p, #pwdMessage h3, #idMessage p, #idMessage h3 {
+  font-size: 14px;
+  margin: 0 auto;
+}
+/* Quality measurement */
+#pwdQuality{ display: inline-block; }
+
+/* Change the color of the password quality bars */
+.hide, .show {
+  display: inline-block;
+  width: 30px;
+  height: 10px;
+  border-radius: 3px;
+}
+.hide { background-color: #444; }
+#pwd1.show { background-color: red; }
+#pwd2.show { background-color: orange; }
+#pwd3.show { background-color: rgb(225, 200, 0); }
+#pwd4.show { background-color: rgb(200, 225, 0); }
+#pwd5.show { background-color: green; }
+
+/* Change color when the requirements are (wrong / right) */
+.invalid { border-color:rgb(131, 25, 25); color: rgb(131, 25, 25); }
+.valid { border-color:rgb(0, 100, 0); color: rgb(0, 100, 0); }
+
+/* Change mark (x / ✔) when requirements are (wrong / right) */
+p.invalid:before {
+  position: relative;
+  left: -15px;
+  content: "✖";
+}
+p.valid:before {
+  position: relative;
+  left: -15px;
+  content: "✔";
+}
