@@ -122,5 +122,4 @@ pwdNode.onkeyup = function() {
   for (let i = 1; i <= arrQuality.length; i++) {
     d3.select('#pwd' + i).attr('class', (quality >= i/5) ? 'show' : 'hide')
   }
-
 }
