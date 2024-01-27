@@ -1,11 +1,21 @@
+/********************************
+* Global styles
+********************************/
 body {
   background-color: #444;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+main { margin-top: 10px; }
+section, fieldset, hgroup, header, main, footer { border-radius: 20px; }
 
-hgroup {
-	background-color: #aaa;
+/********************************
+* General styles in the "Header"
+********************************/
+hgroup { 
+	background-color: #aaa; 
+	padding: 0 0 0.5em 0;
 }
+
 header {
   background-color: #888;
   padding: 1em;
@@ -17,8 +27,8 @@ header {
   text-align: left;
 }
 #menuButton { margin: 20px 0 0 20px; }
-ul { display: none; }
-ul.shown {display: inline-grid; }
+ul { display: none; }								/* hide menu list by default */
+ul.shown {display: inline-grid; }		/* show menu list when class is applied */
 
 h4 {
   margin-top: 0.8em;
@@ -26,25 +36,9 @@ h4 {
   font-family: Calibri;
 }
 
-main {
-  background-color: #aaa;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-section {
-  margin: 10px;
-  padding: 1em;
-  background-color: #ccc;
-}
-section, fieldset, hgroup, header, main, footer {
-    border-radius: 20px;
-}
-fieldset {
-	border-color: #345;
-	border-style: dashed;
-}
-
+/********************************
+* General styles in the "Footer" 
+********************************/
 footer {
 	margin-top: 5px;
   background-color: #987;
@@ -55,6 +49,30 @@ footer {
   display: inline-block;
   margin-right: 100px;
 }
+
+/********************************
+* General styles in the sections 
+********************************/
+section {
+  margin: 10px;
+  padding: 1em;
+  background-color: #ccc;
+}
+
+fieldset {
+	border-color: #345;
+	border-style: dashed;
+}
+
+form {
+  background-color: #ddd;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+/********************************
+* Styles in the "Input" fields 
+********************************/
 input[type=text], input[type=password], textarea {
   width: 100%;
   padding: 12px;
@@ -83,31 +101,24 @@ input[type=reset] {
 	border-radius: 5px;
 }
 
-/* Style the sections */
-form {
-  background-color: #757575;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* The message box is shown when the user clicks on the password field */
-#pwdMessage, #idMessage{
+/********************************
+* Default style of pop-up tip messages 
+********************************/
+.message {
   align-items: center;
   width: 280px;
   display:none;
   background: #aaa;
   color: #000;
   position: relative;
-  margin: -20px auto;
+  margin: -10px;
   padding: 5px 35px;
 	border-radius: 5px;
+	font-size: 14px;
 }
 
-/* reduce the size of text and header in the password tip message */
-#pwdMessage p, #pwdMessage h3, #idMessage p, #idMessage h3 {
-  font-size: 14px;
-  margin: 0 auto;
-}
+.message p, .message h3 { margin: 0 auto; }
+
 /* Quality measurement */
 #pwdQuality{ display: inline-block; }
 
@@ -130,12 +141,12 @@ form {
 .valid { border-color:rgb(0, 100, 0); color: rgb(0, 100, 0); }
 
 /* Change mark (x / ✔) when requirements are (wrong / right) */
-p.invalid:before {
+.invalid:before {
   position: relative;
   left: -15px;
   content: "✖";
 }
-p.valid:before {
+.valid:before {
   position: relative;
   left: -15px;
   content: "✔";

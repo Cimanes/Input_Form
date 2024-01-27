@@ -7,154 +7,140 @@
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<header id='header'>
-	<label for="headerColor" class="colorsel"><i>Choose header color: </i></label>
-	<input type="color" id="headerColor" name="headerColor">
-	
-	<h1><img src="./img/Sound Ghost Logo.jfif" width="50" height="50" alt="Logo"></h1>
-	
-	<hgroup>
-		<h2>Creative Agency</h2>
-		<h3>We are CREATIVE</h3>
-		<p>A creative agency located in Brooking, New York</p>
-		<button>Learn More</button>
-	</hgroup>
-	
-	<nav class="menu">
-		<button class="menuButton" id="menuButton">Menu</button>
-		<ul>
-			<li><a href="#dummy_link_1">li: Link 1</a></li>
-			<li><a href="#dummy_link_2">li: Link 2</a></li>
-			<li><a href="#dummy_link_3">li: Link 3</a></li>
-		</ul>
-	</nav>
-</header>
 
-<main id='main'>
-	<label for="mainColor" class="colorsel"><i>Choose main color: </i></label>
-	<input type="color" id="mainColor" name="mainColor">
+	<header id='header'>
+		<label for="headerColor" class="colorsel"><i>Choose header color: </i></label>
+		<input type="color" id="headerColor" name="headerColor">
 
-	<section name="section 1" id="sect1">
-		<label for="sect1Color"><i>Choose section color: </i></label>
-		<input type="color" id="sect1Color" name="sect1Color">
-		<fieldset id="required">
-			<legend>Required access data</legend>
-			<h4>Access:</h4>
-			<form action="/" method="get" class="form" name="form_1" id="form_1" autocomplete="on">
-				<label for="user">User name: </label>
-				<input type="text" id="user" name="user" placeholder="req'd" required><br>
+		<h1><img src="/img/Logo.jfif" width="50" height="50" alt="Logo"></h1>
 
-				<label for="idNum">ID number </label>
-				<!-- pattern for spanish ID/NIE format -->
-				<input type="text" class="invalid" id="idNum" pattern="(\d){8}(-?)([A-Za-z]){1}|([X-Zx-z]){1}(-?)(\d){7}(-?)([A-Za-z]){1}" maxlength="11" title="Spanish ID or NIE format" required><br>
+		<hgroup>
+			<h2>Tech Docs repository</h2>
+			<h3>Technical data and manuals</h3>
+			<p><i>GE-Vernova internal</i></p>
+			<button>Learn More</button>
+		</hgroup>
 
-				<div id="idMessage">
-					<h3>ID must comply:</h3>
-					<p id="idFormat" class="invalid">Spanish <b>ID / NIE</b> format</p>
-				</div>		
-				
-				<label for="pwd" id="pwdLabel">Password: </label>
-				<div class="hide" id="pwd1"></div>
-				<div class="hide" id="pwd2"></div>
-				<div class="hide" id="pwd3"></div>
-				<div class="hide" id="pwd4"></div>
-				<div class="hide" id="pwd5"></div>
-				<p id="pwdQuality"></p>
-				<!-- pattern for password -->
-				<input type="password" class="invalid" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_=+\-]).{8,}" title="At least one number, one uppercase letter, one lowercase letter, one symbol and 8 or more characters" required>
-				
-				<div id="pwdMessage">
-					<h3>Password must contain:</h3>
-					<p id="lower" class="invalid">One or more <b>lowercase</b> letters</p>
-					<p id="upper" class="invalid">One or more <b>capital (uppercase)</b> letters</p>
-					<p id="number" class="invalid">One or more <b>numbers</b></p>
-					<p id="symbol" class="invalid">One or more <b>symbols</b> (!@#$%^&*_=+-)</p>
-					<p id="length" class="invalid">More than <b>8 characters</b></p>
-				</div>			
-			</form>
+		<nav class="menu">
+			<button class="menuButton" id="menuButton">Menu</button>
+			<ul>
+				<li><a href="#dummy_link_1">li: Link 1</a></li>
+				<li><a href="#dummy_link_2">li: Link 2</a></li>
+				<li><a href="#dummy_link_3">li: Link 3</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id='main'>
+		<form action="/" method="get" class="form" name="form" id="form" autocomplete="on">
+			<label for="formColor" class="colorsel"><i>Choose form color: </i></label>
+			<input type="color" id="formColor" name="formColor">
+
+			<section name="section 1" id="sect1">
+				<label for="sect1Color"><i>Choose section color: </i></label>
+				<input type="color" id="sect1Color" name="sect1Color">
+				<fieldset id="required"><legend>Required access data</legend>
+					<h4>Access:</h4>
+					<label for="user">User name: </label>
+					<input type="text" id="user" name="user" placeholder="req'd" required><br>
+
+					<label for="idNum">ID number </label>
+					<!-- pattern for spanish ID/NIE format -->
+					<input type="text" class="invalid" id="idNum" pattern="(\d){8}(-?)([A-Za-z]){1}|([X-Zx-z]){1}(-?)(\d){7}(-?)([A-Za-z]){1}" maxlength="11" title="Spanish ID or NIE format" required><br>
+
+					<div id="idMessage" class="message">
+						<h3>ID must comply:</h3>
+						<p id="idFormat" class="invalid">Spanish <b>ID / NIE</b> format</p>
+					</div>
+
+					<label for="pwd" id="pwdLabel">Password: </label>
+					<div class="hide" id="pwd1"></div>
+					<div class="hide" id="pwd2"></div>
+					<div class="hide" id="pwd3"></div>
+					<div class="hide" id="pwd4"></div>
+					<div class="hide" id="pwd5"></div>
+					<p id="pwdQuality"></p>
+					<!-- pattern for password -->
+					<input type="password" class="invalid" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_=+\-]).{8,}" title="At least one number, one uppercase letter, one lowercase letter, one symbol and 8 or more characters" required>
+
+					<div id="pwdMessage" class="message">
+						<h3>Password must contain:</h3>
+						<p id="lower" class="invalid">One or more <b>lowercase</b> letters</p>
+						<p id="upper" class="invalid">One or more <b>capital (uppercase)</b> letters</p>
+						<p id="number" class="invalid">One or more <b>numbers</b></p>
+						<p id="symbol" class="invalid">One or more <b>symbols</b> (!@#$%^&*_=+-)</p>
+						<p id="length" class="invalid">More than <b>8 characters</b></p>
+					</div>
+
+					<h4>Your Picture:</h4>
+					<label for="photo">Load a photo: </label>
+					<input type="file" id="photo">
+				</fieldset>
+			</section>
+
+			<section name="section 2" id="sect2">
+				<label for="sect2Color" class="colorsel"><i>Choose section color: </i></label>
+				<input type="color" id="sect2Color" name="sect2Color">
+				<fieldset id="optional"><legend>More about you</legend>
+					<h4>You:</h4>
+					<label for="user">Name: </label>
+					<input type="text" id="user" placeholder="Your real name"><br>
+					<textarea name="" id="" cols="50" rows="4" placeholder="Tell us your story"></textarea>
+
+					<h4>Your age:</h4>
+					<input type="radio" name="age" id="0_20" value="0_20">
+					<label for="0_20">0 to 20 years old</label><br>
+					<input type="radio" name="age" id="20_60" value="20_60">
+					<label for="20_60">20 to 60 years old</label><br>
+					<input type="radio" name="age" id="60_100" value="60_100">
+					<label for="60_100">60 to 100 years old</label>
+
+					<h4>Your hobbies:</h4>
+					<input type="checkbox" id="sports" name="hobbies" value="sports">
+					<label for="sports">Sports</label><br>
+					<input type="checkbox" id="technology" name="hobbies" value="technology">
+					<label for="technology">Technology</label><br>
+					<input type="checkbox" id="dance" name="hobbies" value="dance">
+					<label for="dance">Dance</label>
+
+					<h4>Your education:</h4>
+					<label for="education">Education degree:</label>
+					<select name="education" id="education">
+						<option value="default" selected></option>
+						<option value="primary">Primary</option>
+						<option value="secondary">Secondary</option>
+						<option value="highSchool">High School</option>
+						<option value="university">University</option>
+					</select>
+
+					<h4>Your occupation</h4>
+					<label for="job">Your current occupation:</label>
+					<input name="job" id="job" list="jobs">
+					<datalist id="jobs">
+						<option value="" selected></option>
+						<option value="No job">currently unemployed</option>
+						<option value="Company">working for somebody else</option>
+						<option value="Self">I work for myself</option>
+						<option value="Freelancer">Work as a freelancer</option>
+						<option value="Other">Other situation</option>
+					</datalist>
+				</fieldset>
+			</section>
+
+			<section name="section 3" id="sect3">
+				<label for="sect3Color" class="colorsel"><i><i>Choose section color: </i></i></label>
+				<input type="color" class="colorpick" id="sect3Color" name="sect3Color">
+				<fieldset id="optional"><legend>Submit/Reset</legend>
+					<h4>Submit data or clear fiedls</h4>
+					<input type="submit" name="submit" id="submit" value="Submit data">
+					<input type="reset" name="reset" id="reset" value="Clear Fields">
+				</fieldset>
+			</section>
+		</form>
+		
+		<aside></aside>
 			
-			<h4>Your Picture:</h4>
-			<form action="/" method="get" class="form" name="form_2" id="form_2">
-				<label for="photo">Load a photo: </label>
-				<input type="file" id="photo">
-			</form>
-		</fieldset>
-	</section>
-
-	<section name="section 2" id="sect2">
-		<label for="sect2Color" class="colorsel"><i>Choose section color: </i></label>
-		<input type="color" id="sect2Color" name="sect2Color">
-		<fieldset id="optional">
-			<legend>More about you</legend>
-			<h4>You:</h4>
-			<form action="/" method="get" class="form" name="form_3" id="form_3">
-				<label for="user">Name: </label>
-				<input type="text" id="user" placeholder="Your real name"><br>
-				<textarea name="" id="" cols="50" rows="4" placeholder="Tell us your story"></textarea>
-			</form>
-
-			<h4>Your age:</h4>
-			<form action="/" method="get" class="form" name="form_4" id="form_4">
-				<input type="radio" name="age" id="0_20" value="0_20">
-				<label for="0_20">0 to 20 years old</label><br>
-				<input type="radio" name="age" id="20_60" value="20_60">
-				<label for="20_60">20 to 60 years old</label><br>
-				<input type="radio" name="age" id="60_100" value="60_100">
-				<label for="60_100">60 to 100 years old</label>
-			</form>
-
-			<h4>Your hobbies:</h4>
-			<form action="/" method="get" class="form" name="form_5" id="form_5">
-				<input type="checkbox" id="sports" name="hobbies" value="sports">
-				<label for="sports">Sports</label><br>
-				<input type="checkbox" id="technology" name="hobbies" value="technology">
-				<label for="sports">Technology</label><br>
-				<input type="checkbox" id="dance" name="hobbies" value="dance">
-				<label for="sports">Dance</label>
-			</form>
-
-			<h4>Your education:</h4>
-			<form action="/" method="get" class="form" name="form_6" id="form_6">
-				<label for="education">Education degree:</label>
-				<select name="education" id="education">
-					<option value="default" selected></option>
-					<option value="primary">Primary</option>
-					<option value="secondary">Secondary</option>
-					<option value="highSchool">High School</option>
-					<option value="university">University</option>
-				</select>
-			</form>
-
-			<h4>Your occupation</h4>
-			<form action="/" method="get" class="form" name="form_7" id="form_7">
-				<label for="job">Your current occupation:</label>
-				<input name="job" id="job" list="jobs">
-				<datalist id="jobs">
-					<option value="" selected></option>
-					<option value="No job">currently unemployed</option>
-					<option value="Company">working for somebody else</option>
-					<option value="Self">I work for myself</option>
-					<option value="Freelancer">Work as a freelancer</option>
-					<option value="Other">Other situation</option>
-				</datalist>
-			</form>
-		</fieldset>
-	</section>
-
-	<section name="section 3" id="sect3">
-		<label for="sect3Color" class="colorsel"><i><i>Choose section color: </i></i></label>
-		<input type="color" class="colorpick" id="sect3Color" name="sect3Color">
-		<fieldset id="optional">
-			<legend>Submit/Reset</legend>
-			<h4>Submit data or clear fiedls</h4>
-			<form action="/" method="get" class="form" name="form_8" id="form_8">
-				<input type="submit" name="submit" id="submit" value="Submit data">
-				<input type="reset" name="reset" id="reset" value="Clear Fields">
-			</form>
-	</section>
-	<aside></aside>
-</main>
+	</main>
 
 <footer id="foot">
 	<label for="footColor" class="colorsel"><i>Choose footer color: </i></label>

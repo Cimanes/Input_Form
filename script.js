@@ -3,30 +3,31 @@
 * **************************************************************************/
 const 
 	header = document.getElementById('header'),
-	main = document.getElementById('main'),
-  sect1 = document.getElementById('sect1'),
-  sect2 = document.getElementById('sect2'),
-  sect3 = document.getElementById('sect3'),
-  foot = document.getElementById('foot'),
+	form   = document.getElementById('form'),
+  sect1  = document.getElementById('sect1'),
+  sect2  = document.getElementById('sect2'),
+  sect3  = document.getElementById('sect3'),
+  foot   = document.getElementById('foot'),
+			
   headerColor = document.getElementById('headerColor'),
-  mainColor = document.getElementById('mainColor'),
-  sect1Color = document.getElementById('sect1Color'),
-  sect2Color = document.getElementById('sect2Color'),
-  sect3Color = document.getElementById('sect3Color'),
-  footColor = document.getElementById('footColor');
+  formColor   = document.getElementById('formColor'),
+  sect1Color  = document.getElementById('sect1Color'),
+  sect2Color  = document.getElementById('sect2Color'),
+  sect3Color  = document.getElementById('sect3Color'),
+  footColor   = document.getElementById('footColor');
 
-headerColor.onchange = () => {header.style.backgroundColor = headerColor.value;};
-mainColor.onchange = () => {main.style.backgroundColor = mainColor.value;};
-sect1Color.onchange =() => {sect1.style.backgroundColor = sect1Color.value};
-sect2Color.onchange =() => {sect2.style.backgroundColor = sect2Color.value};
-sect3Color.onchange =() => {sect3.style.backgroundColor = sect3Color.value};
-footColor.onchange =() => {foot.style.backgroundColor = footColor.value};
+headerColor.onchange = () => { header.style.backgroundColor = headerColor.value; };
+formColor.onchange   = () => { form.style.backgroundColor = formColor.value; };
+sect1Color.onchange  = () => { sect1.style.backgroundColor = sect1Color.value };
+sect2Color.onchange  = () => { sect2.style.backgroundColor = sect2Color.value };
+sect3Color.onchange  = () => { sect3.style.backgroundColor = sect3Color.value };
+footColor.onchange   = () => { foot.style.backgroundColor = footColor.value };
 
 /* *************************************************************************
 * Show / hide the navigation menu
 * **************************************************************************/
 const
-	menubutton = d3.select('#menuButton'),
+	menuButton = d3.select('#menuButton').node(),
   menuNode = d3.select('ul').node();
 
 // Click on the menu button => show menu list:
@@ -73,7 +74,8 @@ pwdNode.onblur = function() {	pwdTip.style('display', 'none'); }
 
 // Type inside the password field => check requirements:
 pwdNode.onkeyup = function() {
-
+console.log(headerColor.value);
+	// headerColor[value] = #000000;
 	// Validate lowercase letters using D3
   const lowerReq = /[a-z]/g;
   d3.select("#lower")
@@ -122,4 +124,26 @@ pwdNode.onkeyup = function() {
   for (let i = 1; i <= arrQuality.length; i++) {
     d3.select('#pwd' + i).attr('class', (quality >= i/5) ? 'show' : 'hide')
   }
+}
+
+/* *************************************************************************
+* Clear data
+* **************************************************************************/
+const 
+	clearButton = d3.select('#clearButton').node(),
+	inputs = document.getElementsByTagName('input');
+// console.log(headerColor.value, idNode.value, pwdNode.value);
+// console.log(inputs);
+
+function clearFields() {
+	headerColor.value = black;
+	// for (let i = 0; i < 20; i++) { 
+	// 	console.log(inputs[i]);
+	//  inputs[i].value = "";
+	// }
+	
+clearButton.onclick = () => { 
+	
+	clearFields; }
+
 }
