@@ -2,6 +2,7 @@
 * Change background color of different elements based on their "input-color"
 * **************************************************************************/
 const 
+	pwdBars = document.getElementsByClassName('bar').length, 
 	header = document.getElementById('header'),
 	form   = document.getElementById('form'),
   sect1  = document.getElementById('sect1'),
@@ -27,8 +28,8 @@ footColor.onchange   = () => { foot.style.backgroundColor = footColor.value };
 * Show / hide the navigation menu
 * **************************************************************************/
 const
-	menuButton = d3.select('#menuButton').node(),
-  menuNode = d3.select('ul').node();
+	menuButton = document.getElementById('menuButton'),
+  menuNode = document.getElementsByTagName('ul');
 
 // Click on the menu button => show menu list:
 menuButton.onclick = () => menuNode.classList.toggle('shown');
@@ -37,71 +38,87 @@ menuButton.onclick = () => menuNode.classList.toggle('shown');
 * ID validation
 * **************************************************************************/
 const
-  idTip = d3.select('#idMessage'),
-  idNode = d3.select('#idNum').node();
+  idTip = document.getElementById('idMessage'),
+  idNode = document.getElementById('idNum');
 
 // Click on the ID field => show message box:
-idNode.onfocus = function() {	idTip.style('display', 'block'); }
+idNode.onfocus = function() { idTip.style.display = 'block'; };
 
 // Click outside of the ID field => hide the message box:
-idNode.onblur = function() {	idTip.style('display', 'none'); }
+idNode.onblur = function() { idTip.style.display = 'none'; };
 
 // Validate ID input field
-idNode.onkeyup =  () => {
-	d3.select('#idNum').attr('class', idNode.checkValidity() ? 'valid' : 'invalid');
-	const idOption = /(\d){8}(-?)([A-Za-z]){1}/,
-				nieOption = /([X-Zx-z]){1}(-?)(\d){7}(-?)([A-Za-z]){1}/;
-	
-	d3.select("#idFormat")
-    .attr('class', (idNode.value.match(idOption) || idNode.value.match(nieOption) ) ? 'valid' : 'invalid')
+idNode.onkeyup =  function() { checkId(); };
+
+function checkId() {
+	const format = document.getElementById('idFormat');
+
+	if (idNode.checkValidity()) {
+		idNode.classList.replace('invalid', 'valid');
+		format.classList.replace('invalid', 'valid');
+	}
+	else {
+		idNode.classList.replace('valid', 'invalid');
+		format.classList.replace('valid', 'invalid');
+	}
+
 }
 
 /* *************************************************************************
 * Password validation
 * **************************************************************************/
 const	
-	pwdTip = d3.select('#pwdMessage'),
-	pwdNode = d3.select('#pwd').node(),
-  pwdQuality = d3.select('#pwdQuality').node();
+	pwdTip = document.getElementById('pwdMessage'),
+	pwdNode = document.getElementById('pwd'),
+  pwdQuality =document.getElementById('pwdQuality');
 
 // Click on the password field => show message box:
-pwdNode.onfocus = function() {	
-  pwdTip.style('display', 'block'); 
-}
+pwdNode.onfocus = function() { pwdTip.style.display = 'block'; };
 
 // Click outside of the password field => hide the message box:
-pwdNode.onblur = function() {	pwdTip.style('display', 'none'); }
+pwdNode.onblur = function() {	pwdTip.style.display = 'none'; };
 
 // Type inside the password field => check requirements:
-pwdNode.onkeyup = function() {
-console.log(headerColor.value);
-	// headerColor[value] = #000000;
-	// Validate lowercase letters using D3
-  const lowerReq = /[a-z]/g;
-  d3.select("#lower")
-    .attr('class', pwdNode.value.match(lowerReq) ? 'valid' : 'invalid')
+pwdNode.onkeyup = function() { checkPassword(); };
+function checkPassword() {
+	// Create function to validate one element complies with one regex.
+	function checkReg(reg, element) {
+		if(pwdNode.value.match(reg)) element.classList.replace('invalid', 'valid');
+		else element.classList.replace('valid', 'invalid');
+	}	
+	
+	// Validate lowercase letters
+  const 
+		lowerReq = /[a-z]/g,
+		lowerTip = document.getElementById('lower');
+	checkReg(lowerReq, lowerTip);
 
-  // Validate Uppercase letters using D3
-  const upperReq = /[A-Z]/g;
-  d3.select("#upper")
-    .attr('class', pwdNode.value.match(upperReq) ? 'valid' : 'invalid')
+  // Validate Uppercase letters
+  const 
+		upperReq = /[A-Z]/g,
+		upperTip = document.getElementById('upper');
+	checkReg(upperReq, upperTip);
 
-  // Validate numbers using D3
-  const numberReq = /[0-9]/g;
-  d3.select("#number")
-    .attr('class', pwdNode.value.match(numberReq) ? 'valid' : 'invalid')
+  // Validate numbers
+  const 
+		numberReq = /[0-9]/g,
+		numberTip = document.getElementById('number');
+	checkReg(numberReq, numberTip);
   
-  // Validate Symbols using D3
-  const symbolReq = /[!@#$%^&*_=+\-]/g;
-  d3.select("#symbol")
-    .attr('class', pwdNode.value.match(symbolReq) ? 'valid' : 'invalid')
+  // Validate Symbols
+  const 
+		symbolReq = /[!@#$%^&*_=+\-]/g,
+		symbolTip = document.getElementById('symbol');
+	checkReg(symbolReq, symbolTip);
 
   // Validate length
-  d3.select('#length')
-    .attr('class', (8 <= pwdNode.value.length) ? 'valid' : 'invalid')
-
+	const lengthTip = document.getElementById('length');
+	if(pwdNode.value.length >= 8) lengthTip.classList.replace('invalid', 'valid');
+	else lengthTip.classList.replace('valid', 'invalid');
+ 
   // Validate password input field
-  d3.select('#pwd').attr('class', this.checkValidity() ? 'valid' : 'invalid');
+	if (pwdNode.checkValidity()) pwdNode.classList.replace('invalid', 'valid');
+	else pwdNode.classList.replace('valid', 'invalid');
 
   // Measure quality of the password
   const 
@@ -121,29 +138,20 @@ console.log(headerColor.value);
   else pwdQuality.innerHTML = '';
 
   // Update color of the password quality bars
-  for (let i = 1; i <= arrQuality.length; i++) {
-    d3.select('#pwd' + i).attr('class', (quality >= i/5) ? 'show' : 'hide')
+  for (let i = 1; i <= pwdBars; i++) {
+		const ibar = document.getElementById('pwd' + i);
+		
+		if(quality >= i/5) ibar.classList.add('show');
+		else ibar.classList.remove('show');
   }
 }
 
 /* *************************************************************************
-* Clear data
+* Reset formats when resetting form
 * **************************************************************************/
-const 
-	clearButton = d3.select('#clearButton').node(),
-	inputs = document.getElementsByTagName('input');
-// console.log(headerColor.value, idNode.value, pwdNode.value);
-// console.log(inputs);
-
-function clearFields() {
-	headerColor.value = black;
-	// for (let i = 0; i < 20; i++) { 
-	// 	console.log(inputs[i]);
-	//  inputs[i].value = "";
-	// }
-	
-clearButton.onclick = () => { 
-	
-	clearFields; }
-
+form.onreset = function() { 
+	const valids = document.getElementsByClassName('valid'),
+				size = valids.length;
+	for (let i = 0; i < size; i++) {	valids[0].classList.replace('valid', 'invalid'); }
+	for (let i = 1; i <= pwdBars; i++) { document.getElementById('pwd' + i).classList.remove('show'); }
 }

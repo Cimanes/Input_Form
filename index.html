@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" >
+	
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Structure &amp; forms</title>
   <link rel="stylesheet" href="./style.css">
 
+	<!-- Optional: Uncomment if using D3 library -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js'></script>
 </head>
-<body>
 
+<body>
 	<header id='header'>
 		<label for="headerColor" class="colorsel"><i>Choose header color: </i></label>
 		<input type="color" id="headerColor" name="headerColor">
@@ -42,11 +45,11 @@
 				<fieldset id="required"><legend>Required access data</legend>
 					<h4>Access:</h4>
 					<label for="user">User name: </label>
-					<input type="text" id="user" name="user" placeholder="req'd" required><br>
+					<input type="text" id="user" name="user" title='Choose a User Name (be creative)' placeholder="required" autofocus required><br>
 
 					<label for="idNum">ID number </label>
 					<!-- pattern for spanish ID/NIE format -->
-					<input type="text" class="invalid" id="idNum" pattern="(\d){8}(-?)([A-Za-z]){1}|([X-Zx-z]){1}(-?)(\d){7}(-?)([A-Za-z]){1}" maxlength="11" title="Spanish ID or NIE format" required><br>
+					<input type="text" class="invalid" id="idNum" pattern="^(\d){8}(-?)([A-Za-z]){1}$|^([X-Zx-z]){1}(-?)(\d){7}(-?)([A-Za-z]){1}$" maxlength="11" title="Spanish ID or NIE format" placeholder="required" required><br>
 
 					<div id="idMessage" class="message">
 						<h3>ID must comply:</h3>
@@ -54,14 +57,14 @@
 					</div>
 
 					<label for="pwd" id="pwdLabel">Password: </label>
-					<div class="hide" id="pwd1"></div>
-					<div class="hide" id="pwd2"></div>
-					<div class="hide" id="pwd3"></div>
-					<div class="hide" id="pwd4"></div>
-					<div class="hide" id="pwd5"></div>
+					<div class="bar" id="pwd1"></div>
+					<div class="bar" id="pwd2"></div>
+					<div class="bar" id="pwd3"></div>
+					<div class="bar" id="pwd4"></div>
+					<div class="bar" id="pwd5"></div>
 					<p id="pwdQuality"></p>
 					<!-- pattern for password -->
-					<input type="password" class="invalid" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_=+\-]).{8,}" title="At least one number, one uppercase letter, one lowercase letter, one symbol and 8 or more characters" required>
+					<input type="password" class="invalid" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_=+\-]).{8,}" title="At least one number, one uppercase letter, one lowercase letter, one symbol and 8 or more characters" placeholder="required" required>
 
 					<div id="pwdMessage" class="message">
 						<h3>Password must contain:</h3>
@@ -147,8 +150,10 @@
 	<input type="color" class="colorpick" id="footColor" name="footColor">
 	<p id="footText"><i>My first web page</i></p>
 </footer>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js'></script><script  src="./script.js"></script>
+
+<!-- Optional: Uncomment one of the following, depending on using D3 library or not: -->
+<script src="./script_d3.js"></script>
+<!-- <script  src="./script.js"></script> -->
 
 </body>
 </html>

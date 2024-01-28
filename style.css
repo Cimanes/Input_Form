@@ -111,7 +111,7 @@ input[type=reset] {
   background: #aaa;
   color: #000;
   position: relative;
-  margin: -10px;
+  margin: -10px 0;
   padding: 5px 35px;
 	border-radius: 5px;
 	font-size: 14px;
@@ -123,13 +123,13 @@ input[type=reset] {
 #pwdQuality{ display: inline-block; }
 
 /* Change the color of the password quality bars */
-.hide, .show {
+.bar, .show {
   display: inline-block;
   width: 30px;
   height: 10px;
   border-radius: 3px;
 }
-.hide { background-color: #444; }
+.bar { background-color: #444; }
 #pwd1.show { background-color: red; }
 #pwd2.show { background-color: orange; }
 #pwd3.show { background-color: rgb(225, 200, 0); }
