@@ -83,53 +83,46 @@ pwdNode.onkeyup = function() { checkPassword(); };
 function checkPassword() {
 	// Create function to validate one element complies with one regex.
 	function checkReg(reg, element) {
-		if(pwdNode.value.match(reg)) element.classList.replace('invalid', 'valid');
-		else element.classList.replace('valid', 'invalid');
+		if(pwdNode.value.match(reg)) document.getElementById(element).classList.replace('invalid', 'valid');
+		else document.getElementById(element).classList.replace('valid', 'invalid');
 	}	
-	
+	let arrQuality = [];
 	// Validate lowercase letters
-  const 
-		lowerReq = /[a-z]/g,
-		lowerTip = document.getElementById('lower');
-	checkReg(lowerReq, lowerTip);
+  let	reg = /[a-z]/g;
+	let	element = 'lower';
+	checkReg(reg, element);
+	arrQuality.push(pwdNode.value.match(reg));
 
   // Validate Uppercase letters
-  const 
-		upperReq = /[A-Z]/g,
-		upperTip = document.getElementById('upper');
-	checkReg(upperReq, upperTip);
+  reg = /[A-Z]/g;
+	element = 'upper';
+	checkReg(reg, element);
+	arrQuality.push(pwdNode.value.match(reg));
 
   // Validate numbers
-  const 
-		numberReq = /[0-9]/g,
-		numberTip = document.getElementById('number');
-	checkReg(numberReq, numberTip);
+	reg = /[0-9]/g,
+	element = 'number';
+	checkReg(reg, element);
+	arrQuality.push(pwdNode.value.match(reg));
   
   // Validate Symbols
-  const 
-		symbolReq = /[!@#$%^&*_=+\-]/g,
-		symbolTip = document.getElementById('symbol');
-	checkReg(symbolReq, symbolTip);
+	reg = /[!@#$%^&*_=+\-]/g;
+	element = 'symbol';
+	checkReg(reg, element);
+	arrQuality.push(pwdNode.value.match(reg));
 
   // Validate length
 	const lengthTip = document.getElementById('length');
 	if(pwdNode.value.length >= 8) lengthTip.classList.replace('invalid', 'valid');
 	else lengthTip.classList.replace('valid', 'invalid');
+	arrQuality.push(pwdNode.value.length >= 8);	
  
   // Validate password input field
 	if (pwdNode.checkValidity()) pwdNode.classList.replace('invalid', 'valid');
 	else pwdNode.classList.replace('valid', 'invalid');
 
   // Measure quality of the password
-  const 
-    arrQuality = [
-      pwdNode.value.match(lowerReq), 
-      pwdNode.value.match(upperReq), 
-      pwdNode.value.match(numberReq), 
-      pwdNode.value.match(symbolReq), 
-      (pwdNode.value.length >= 8)
-    ],
-    quality = arrQuality.filter(Boolean).length / arrQuality.length;
+  quality = arrQuality.filter(Boolean).length / arrQuality.length;
 
   // Update quality mark 
   if (pwdNode.value.length > 0) {
@@ -147,11 +140,14 @@ function checkPassword() {
 }
 
 /* *************************************************************************
-* Reset formats when resetting form
+* Reset formats when reseting form
 * **************************************************************************/
 form.onreset = function() { 
 	const valids = document.getElementsByClassName('valid'),
 				size = valids.length;
 	for (let i = 0; i < size; i++) {	valids[0].classList.replace('valid', 'invalid'); }
-	for (let i = 1; i <= pwdBars; i++) { document.getElementById('pwd' + i).classList.remove('show'); }
+	
+	for (let i = 1; i <= pwdBars; i++) {
+		document.getElementById('pwd' + i).classList.remove('show');
+  }
 }

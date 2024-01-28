@@ -112,15 +112,7 @@ function checkPassword() {
   d3.select('#pwd').attr('class', pwdNode.checkValidity() ? 'valid' : 'invalid');
 
   // Measure quality of the password
-  // const 
-  //   arrQuality = [
-  //     pwdNode.value.match(lowerReq), 
-  //     pwdNode.value.match(upperReq), 
-  //     pwdNode.value.match(numberReq), 
-  //     pwdNode.value.match(symbolReq), 
-  //     (pwdNode.value.length >= 8)
-  //   ],
-    quality = arrQuality.filter(Boolean).length / arrQuality.length;
+  quality = arrQuality.filter(Boolean).length / arrQuality.length;
 
   // Update quality mark 
   if (pwdNode.value.length > 0) {
